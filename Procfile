@@ -1,1 +1,1 @@
-web: gunicorn wsgi:commerce --preload --workers 1
+web: gunicorn commerce.wsgi --preload --workers 1
