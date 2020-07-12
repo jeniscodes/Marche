@@ -23,11 +23,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("auctions.urls")),
     path("login", auth_views.LoginView.as_view())
-]
-
-from django.conf import settings
-urlpatterns += patterns('',
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
-    )
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
