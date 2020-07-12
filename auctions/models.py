@@ -8,9 +8,9 @@ class User(AbstractUser):
 
 class Listing(models.Model):
     title=models.CharField(max_length=64)
-    description=models.CharField(max_length=100)
-    price=models.IntegerField()
-    Image=models.CharField(max_length=100)
+    description=models.CharField(max_length=300)
+    price=models.FloatField()
+    Image=models.CharField(max_length=300)
 
     category=models.CharField(max_length=64)
     owner=models.ForeignKey(User, on_delete=models.CASCADE, related_name="items")

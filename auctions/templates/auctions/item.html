@@ -7,7 +7,7 @@
       <div class="textformat">  <p class="textin"> <h3 class="texttitle">{{item.title}} </h3>
          <p style="color:grey">${{item.price}}</p> <p class="details">  Category :   {{ item.category }} <br>
             Auction Status{% if status %} <h6 style="color:red"> {{item.status}} </h6>{% else %}  <h6 style="color:green">  {{item.status}}</h6>  {% endif %}
-             Category : {{item.category}} <br> Created by :  {{ item.owner }} </p> <br><br> 
+             Category : {{item.category}} <br> Created by :  {{ item.owner }} </p> <br><br>
 
 
                <form action="{% url 'bid' item.id %}" method="post">
@@ -15,7 +15,7 @@
   <div class="form-row align-items-center">
     <div class="col-sm-3 my-1">
 
-      <input type="number" class="form-control" id="inlineFormInputName" name="bid" placeholder="Bid">
+      <input type="number" step="0.01" class="form-control" id="inlineFormInputName" name="bid" placeholder="Bid">
     </div>
 
 
