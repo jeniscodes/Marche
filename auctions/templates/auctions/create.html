@@ -1,0 +1,50 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<div class="create">
+<div class="card  h-75 d-inline-block" style="width: 50rem" id="create">
+  <div class="card-body">
+    <h2 class="textup">  Create a Listing </h2>
+    <form action="{% url 'create' %}" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <input type="text" name="title" placeholder="Title" class="form-control"  aria-describedby="emailHelp">
+      </div>
+
+      <div class="form-group">
+        <input type="number" name="bid" placeholder="Starting Bid" class="form-control" > </div>
+        <div class="form-group">
+        <input type="text" name="category" placeholder="Category" class="form-control" >
+        </div>
+        <div class="form-group">
+        <input type="url" name="url" placeholder="Image Address" class="form-control" >
+        </div>
+        <div class="form-group">
+
+          <textarea class="form-control" rows="5" id="comment1" name=description placeholder="Description"></textarea>
+          </div>
+
+        <br>
+
+        <input class="btn btn-secondary btn-lg btn-block" type="submit" value="Create">
+
+
+     </form> <br>
+  </div>
+
+  {% if message %}
+  <div class="alert alert-secondary" role="alert">
+   &ensp;  {{ message }}
+</div>
+
+  {% endif %}
+
+  </div>
+
+  </div>
+
+
+
+{% endblock %}

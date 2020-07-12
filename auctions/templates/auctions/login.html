@@ -1,0 +1,45 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+
+
+
+
+
+
+
+<div class="logcard ">
+<div class="card  h-75 d-inline-block" style="width: 30rem" id="log">
+  <div class="card-body">
+    <h2 class="textup">  Login &ensp;   <a href="{% url 'register' %}" style="color:grey">Register</a> </h2> <br> <br> <br>
+      Login Your Account <br> <br>
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+
+      <input type="text" name="username" placeholder="Username" class="form-control"  aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+
+
+
+        <input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+        <input class="btn btn-secondary btn-lg btn-block" type="submit" value="Login">
+
+
+     </form> <br>
+  </div>
+  {% if message %}
+  <div class="alert alert-secondary" role="alert">
+   &ensp;  {{ message }}
+</div>
+
+  {% endif %}
+</div>
+</div>
+
+{% endblock %}

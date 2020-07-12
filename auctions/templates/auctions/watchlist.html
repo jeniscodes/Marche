@@ -1,0 +1,66 @@
+{% extends "auctions/layout.html" %}
+
+  {% block body %}
+
+  <div class="padding">
+
+    <h2> Watchlist</h2>
+
+
+        {% if wlist %}
+
+        <table class="table">
+  <tr>
+    <th> Item </th>
+    <th> Price </th>
+    <th> Status </th>
+    <th> Owner </th>
+    <th>  </th>
+    </tr>
+  <tbody>
+    {% for list in wlist %}
+    <tr>
+
+
+      <td> <a href="{% url 'item' list.litem.id %}" style="color:black">{{list.litem.title}} </a> </td>
+
+      <td>${{list.litem.price}}</td>
+
+      <td>{{list.litem.status}}</td>
+      <td>{{list.litem.owner}}</td>
+      <td>
+
+        <form action="{% url 'watchlist'  %}" method="post">
+          {% csrf_token %}
+
+
+        <button class="btn btn-outline-secondary"   type="submit" name="remove" value="{{ list.id }}"> Remove from the watchlist &#x2661; </button>
+
+        </form>
+
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+
+{% endfor %}
+
+    {% else %}
+    <br>
+    <br>
+    
+
+  <h3>&ensp;  No items has been added in the watchlist. </h3>
+
+      {% endif %}
+
+
+
+
+
+</div>
+
+{% endblock %}

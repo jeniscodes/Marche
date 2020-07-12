@@ -1,0 +1,66 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+
+
+
+
+    <div class="padding">
+
+      <h2> Listing by Categories</h2> <br>
+
+
+
+
+            {% if items %}
+
+          <table class="table">
+    <tr>
+
+      <th> Item </th>
+      <th> Price </th>
+      <th> Category </th>
+      <th> Owner </th>
+
+
+      </tr>
+    <tbody>
+    {% for item in items %}
+      <tr>
+
+
+        <td> <a href="{% url 'item' item.id %}" style="color:black">{{item.title}} </a> </td>
+
+        <td>${{item.price}}</td>
+
+        <td>{{item.category}}</td>
+        <td>{{item.owner}}</td>
+
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+      {% else %}
+      <br>
+      <br>
+
+
+    <h3>&ensp;  No active listing in this category. </h3>
+
+        {% endif %}
+
+
+
+
+
+  </div>
+
+
+{% endblock %}

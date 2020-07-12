@@ -1,0 +1,141 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+        <div class='leftin'>
+        <p style="float: left;"> <img src={{ item.Image }} height="300px" width="250px" border="2px" class="imgin"> </p>
+      <div class="textformat">  <p class="textin"> <h3 class="texttitle">{{item.title}} </h3>
+         <p style="color:grey">${{item.price}}</p> <p class="details">  Category :   {{ item.category }} <br>
+            Auction Status{% if status %} <h6 style="color:red"> {{item.status}} </h6>{% else %}  <h6 style="color:green">  {{item.status}}</h6>  {% endif %}
+             Category : {{item.category}} <br> Created by :  {{ item.owner }} </p> <br><br> 
+
+
+               <form action="{% url 'bid' item.id %}" method="post">
+                 {% csrf_token %}
+  <div class="form-row align-items-center">
+    <div class="col-sm-3 my-1">
+
+      <input type="number" class="form-control" id="inlineFormInputName" name="bid" placeholder="Bid">
+    </div>
+
+
+
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-dark">Bid</button>
+    </div>
+  </div>
+</form>
+<br>
+<form action="{% url 'add' item.id %}" method="post">
+  {% csrf_token %}
+
+<button type="submit" class="btn btn-outline-secondary"> &#9829 Add To Watchlist</button>
+</form>
+
+</div>
+</div>
+<br> <br>
+<div class="padding">
+
+  {% if message %}
+    <div class="alert alert-secondary" role="alert">   {{ message }}  </div>
+      {% endif %}
+
+
+{% if wmessage %}
+<div class="alert alert-secondary" role="alert">
+
+
+    <form action="{% url 'remove' item.id %}" method="post">
+      {% csrf_token %}
+      <h6  class="d-inline-block alert">  {{ wmessage }}  </h6> &ensp;
+
+    <button class="btn btn-outline-secondary"  type="submit"> Remove From The Watchlist &#x2661; </button>
+    </form>
+    </div>
+
+
+    {% endif %}
+<h6> Description </h6>
+    <p class='comments'> {{item.description}} </p>
+
+    </div>
+    <br> <br>
+
+
+
+
+
+      <div id=top1 class="padding">
+        <br>
+{% if bids %}
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Bidder Id</th>
+      <th scope="col">Username</th>
+
+      <th scope="col">Bid</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for bid in bids %}
+    <tr>
+      <th scope="row">{{bid.id}}</th>
+      <td>{{bid.bidder}}</td>
+
+      <td>{{bid.bid}}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+{% endfor %}
+{% else %}
+<h3>&ensp;  No bids yet </h3>
+  {% endif %}
+
+  <hr class="style14">
+<h6>  &ensp; Comments </h6>
+{% if comments %}
+              {% for comment in comments %}
+
+
+
+              <div class="card border-0">
+
+     <div class="card-body border-0">
+
+       <p class="card-text " >  <div class="comment"> {{comment.commenter.username}} </div> <br> <p class="comments"> {{comment.comment}} </p> </p>
+       <hr class="style14">
+
+     </div>
+   </div>
+   {% endfor %}
+      {% else %}
+
+      <div class="card border-0">
+
+
+   </div>
+   <div class="card-body border-0">
+   <p class="card-text">  No Comments yet.</p>
+   </div>
+   <hr class="style14">
+   {% endif %}
+   <br>
+   <form  action="{% url 'comment' item.id %}" method="post">
+     {% csrf_token %}
+     <div class="form-group">
+       <textarea class="form-control" rows="5" id="comment1" name=review placeholder="Comment"></textarea>
+     </div>
+    &ensp;  <button type="submit" class="btn btn-dark"> submit </button>
+     </form>
+<br>
+</div>
+
+
+
+
+
+{% endblock %}

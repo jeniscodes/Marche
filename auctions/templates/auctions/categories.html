@@ -1,0 +1,35 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="padding">
+
+    <h2> Categories</h2> <br> <br>
+
+
+        {% if items %}
+
+
+
+           {% for item in items %}
+
+
+      <h6> <a href="{% url 'clisting' item.category %}" style="color:grey"> {{item.category}} </a>  <h6> <br>
+
+
+{% endfor %}
+
+    {% else %}
+
+    <br> <br>
+
+  <h3>  No items in any category. </h3>
+
+      {% endif %}
+
+
+
+
+</div>
+
+
+{% endblock %}

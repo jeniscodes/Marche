@@ -1,0 +1,59 @@
+
+{% extends "auctions/layout.html" %}
+
+  {% block body %}
+
+  <div class="padding">
+
+    <h2> MyList</h2>
+
+
+          {% if mylist %}
+
+        <table class="table">
+  <tr>
+    <th> ID </th>
+    <th> Item </th>
+    <th> Price </th>
+    <th> Status </th>
+
+
+    </tr>
+  <tbody>
+  {% for item in mylist %}
+    <tr>
+
+<td>{{item.id}}</td>
+      <td> <a href="{% url 'item' item.id %}" style="color:black">{{item.title}} </a> </td>
+
+      <td>${{item.price}}</td>
+
+      <td>{{item.status}}</td>
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+    {% else %}
+    <br>
+    <br>
+
+
+  <h3>&ensp;  You haven't created any listing. </h3>
+
+      {% endif %}
+
+
+
+
+
+</div>
+
+
+{% endblock %}
