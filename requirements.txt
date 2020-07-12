@@ -62,10 +62,7 @@ entrypoints==0.3
 et-xmlfile==1.0.1
 fake-useragent==0.1.11
 fastcache==1.1.0
-fbchat==1.9.6
 filelock==3.0.12
-Flask==1.1.1
-Flask-Session==0.3.2
 folium==0.11.0
 fsspec==0.5.2
 future==0.18.2
