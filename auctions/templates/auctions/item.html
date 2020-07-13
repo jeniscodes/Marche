@@ -12,6 +12,7 @@
 
                <form action="{% url 'bid' item.id %}" method="post">
                  {% csrf_token %}
+                        <input type="number" step="0.01" class="form-control" id="inlineFormInputName" name="bid" placeholder="Starting Bid">
   <div class="form-row align-items-center">
     <div class="col-sm-3 my-1">
         
