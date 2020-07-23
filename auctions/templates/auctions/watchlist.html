@@ -1,3 +1,4 @@
+
 {% extends "auctions/layout.html" %}
 
   {% block body %}
@@ -30,6 +31,7 @@
       <td>{{list.litem.owner}}</td>
       <td>
 
+
         <form action="{% url 'watchlist'  %}" method="post">
           {% csrf_token %}
 
@@ -41,12 +43,13 @@
       </td>
 
     </tr>
+    {% endfor %}
+
   </tbody>
 </table>
 
 
 
-{% endfor %}
 
     {% else %}
     <br>

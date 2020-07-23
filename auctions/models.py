@@ -33,7 +33,7 @@ class Bid(models.Model):
 
 class Comment(models.Model):
 
-    comment=models.CharField(max_length=100)
+    comment=models.CharField(max_length=300)
 
     item=models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="comments")
     commenter=models.ForeignKey(User, on_delete=models.CASCADE, related_name="lcommenters")
